@@ -1,4 +1,16 @@
+var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+var env = config.GetSection("Env").Value;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+// Add Json files 
+builder.Host.ConfigureAppConfiguration(config =>
+{
+    config.AddJsonFile("appsettings.json").AddJsonFile($"appsettings.{env}.json");
+});
+
 
 // Add services to the container.
 
