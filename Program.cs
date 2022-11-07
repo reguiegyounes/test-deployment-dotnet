@@ -4,12 +4,12 @@ var env = config.GetSection("Env").Value;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 // Add Json files 
 builder.Host.ConfigureAppConfiguration(config =>
 {
     config.AddJsonFile("appsettings.json").AddJsonFile($"appsettings.{env}.json");
 });
+builder.WebHost.UseUrls("http://localhost:5000");
 
 
 // Add services to the container.
@@ -33,5 +33,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+
 
 app.Run();
