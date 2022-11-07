@@ -9,7 +9,7 @@ builder.Host.ConfigureAppConfiguration(config =>
 {
     config.AddJsonFile("appsettings.json").AddJsonFile($"appsettings.{env}.json");
 });
-builder.WebHost.UseUrls("http://localhost:5000");
+
 
 
 // Add services to the container.
@@ -20,6 +20,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+
+Directory.SetCurrentDirectory(builder.Environment.ContentRootPath);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
