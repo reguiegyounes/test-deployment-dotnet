@@ -22,7 +22,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 
-Directory.SetCurrentDirectory(builder.Environment.ContentRootPath);
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
